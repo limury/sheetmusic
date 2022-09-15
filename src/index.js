@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Profile from './pages/Profile';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
-export const themeOptions = {
+export const themeOptions = createTheme({
   palette: {
     type: 'light',
     primary: {
@@ -20,7 +20,7 @@ export const themeOptions = {
       main: '#1976d2',
     },
   },
-};
+});
 
 
 const router = createBrowserRouter([
@@ -37,9 +37,9 @@ const router = createBrowserRouter([
   {
     path: "/profile/:username",
     element: <Profile />,
-    loader: async ({params}) => {
-      // fetch user data here
-    }
+    // loader: async ({params}) => {
+    //   // fetch user data here
+    // }
   },
 ]);
 
