@@ -1,7 +1,8 @@
 import { Card, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react'
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import PdfPreview from '../components/PdfPreview';
 
 function Profile() {
   const { username } = useParams();
@@ -21,7 +22,7 @@ function Profile() {
     filename: 'SPACE MAN Sheet Music Sam Ryder (SheetMusic-Free.com).pdf',
     songName: 'SPACE MAN',
   },
-];
+  ];
   
   return (
     <Box sx={{display: 'flex',
@@ -54,13 +55,15 @@ function Profile() {
         {
           sheets.map(({author, filename, songName}, i) => 
             <Grid item md={4} xs={12} key={i}>
-              <Card sx={{ padding: '1rem' }}>
-                <Typography variant='h6'>
-                  {songName}
-                </Typography>
-                <Typography>
-                  Transcribed by: {author}
-                </Typography>
+              <Card>
+                <Box sx={{ padding: '1rem' }}>
+                  <Typography variant='h6'>
+                    {songName}
+                  </Typography>
+                  <Typography>
+                    Transcribed by: {author}
+                  </Typography>
+                </Box>
               </Card>
             </Grid>
           )
